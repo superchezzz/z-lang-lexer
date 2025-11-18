@@ -71,25 +71,23 @@ Arithmetic, Assignment, Comparison, Logical, and Unary
 - Multi-line: `/* ... */`
 
 
+## 🛠️ Technical Details
+
+This repository contains the **Lexical Analyzer (Scanner)** for Z Lang, built from scratch in C.
+- **Language:** C  
+- **Input:** `.zlang` source files  
+
+
 ## 💻 How to Run
 
 ### **1. Compile the Lexer**
 
 ```bash
-gcc lexer.c -o lexer
+gcc z-lexer.c -o z-lexer
 ```
 
 ### **2. Run with a .zlang File**
 Create a file named test.zlang and run:
 ```terminal
-./lexical test.zlang
+./z-lexer test.zlang
 ```
-
-## 🛠️ Technical Details
-
-This repository contains the **Lexical Analyzer (Scanner)** for Z Lang, built from scratch in C.
-
-- **Implementation:** Hand-rolled Finite State Machine (FSM)  
-- **Language:** C  
-- **Input:** `.zlang` source files  
-
