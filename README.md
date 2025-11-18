@@ -63,8 +63,8 @@ Arithmetic, Assignment, Comparison, Logical, and Unary
 ### **Literals**
 - Integers (`NUMBS`)
 - Floating-point (`DECI`)
-- Strings
-- Characters
+- Strings (`TEXT`)
+- Characters (`EMOJI`)
 
 ### **Comments**
 - Single-line: `//`
