@@ -1,0 +1,17 @@
+// test
+TEXT Driver = "Max Verstappen";
+NUMBS Gap = 20;
+
+ZAVED PitStop {
+    SPILL("BOX BOX BOX!");
+    Gap -= 3; // Super fast stop
+}
+
+IF (Gap > 10) {
+    PitStop();
+} ELSE {
+    SPILL("Stay out.");
+}
+
+SPILL("Gap is now: ", Gap);
+SPILL(Driver)(" WINS!");
