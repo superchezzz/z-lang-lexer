@@ -128,6 +128,10 @@ Token makeToken(TokenType type) {
     strncpy(token.lexeme, source_code + start, length);
     token.lexeme[length] = '\0';
 
+    if (length > 0 && token.lexeme[length - 1] == '\r') {
+        token.lexeme[length - 1] = '\0';
+    }
+
     return token;
 }
 
@@ -347,9 +351,8 @@ Token handleIdentifier() { // IDENTIFIER RULE: (CAPS | SM) (CAPS | SM | _ | DIGI
 //MAIN TOKEN SCANNER FUNCTION
 Token scanToken() {
     skipWhitespace();
-    tokenStartLine = line;
-
     start = current;
+    tokenStartLine = line;
     if (isAtEnd()) {
         return makeToken(TOKEN_EOF);
     }
@@ -391,14 +394,12 @@ Token scanToken() {
             return makeToken(match('=') ? TOKEN_OP_MULTIPLY_ASSIGN : TOKEN_OP_MULTIPLY);
         //COMMENTS
         case '/':
-            if (match('/')) { 
-                tokenStartLine = line;
+            if (match('/')) {
                 while (peek() != '\n' && !isAtEnd()) {
                     nextChar();
                 }
                 return makeToken(TOKEN_COMMENT);
             } else if (match('*')) {
-                tokenStartLine = line;
                 while (!(peek() == '*' && peekNext() == '/') && !isAtEnd()) {
                     if (peek() == '\n') line++;
                     nextChar();
